@@ -14,8 +14,4 @@ use Application\Controllers\frontController;
 // -- Initialisation du Site
 require 'bootstrap.php';
 
-require(HEADER_SITE);
-
-    $frontController = new frontController($_GET);
-    
-require(FOOTER_SITE);
+$frontController = new frontController($_GET);

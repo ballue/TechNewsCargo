@@ -7,7 +7,7 @@ class Autoloader {
     }
     
     public static function autoload($class) {
-        print_r($class);
+        //print_r($class);
         require RACINE_SITE.'/'.$class.'.php';
     }
     
