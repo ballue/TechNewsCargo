@@ -7,5 +7,10 @@ class adminController extends \Application\Controllers\appController
         
         $this->render('admin/connexion');
     }
+    
+    public function inscription() {
+    
+        $this->render('admin/inscription');
+    }
 }
 

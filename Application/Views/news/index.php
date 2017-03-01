@@ -1,16 +1,16 @@
-<?php 
-    $params = $this->getParams();
-    print_r($params);
+<?php
+    $params     = $this->getParams();
+    $articles   = $params['articles'];
+    $spotlight  = $params['spotlight'];
+    //print_r($spotlight);
 ?>
-
-
 <div class="row">
 <!--colleft-->
 <div class="col-md-8 col-sm-12">
 	<div class="box-caption">
 		<span>spotlight</span>
 	</div>
-	<!--sportlight-->
+	<!--spotlight-->
 	<section class="owl-carousel owl-spotlight">
 		<div>
 			<article class="spotlight-item">
@@ -94,126 +94,47 @@
 	<!--spotlight-thumbs-->
 	<section class="spotlight-thumbs">
 		<div class="row">
+		<?php foreach($articles as $article) : ?>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="spotlight-item-thumb">
 					<div class="spotlight-item-thumb-img">
 						<a href="#">
-							<img alt="" src="images/product/3.jpg" />
+							<img alt="<?= $article->getTITREARTICLE(); ?>" src="<?= PUBLIC_URL; ?>/images/product/<?= $article->getFEATUREDIMAGEARTICLE(); ?>" />
 						</a>
-						<a href="#" class="cate-tag">business</a>
+						<a href="#" class="cate-tag"><?= $article->getCategorieObj()->getLIBELLECATEGORIE(); ?></a>
 					</div>
-					<h3><a href="#">Tip Aligning Digital Marketing with Business Goals and Objectives</a></h3>
+					<h3><a href="#"><?= $article->getTITREARTICLE(); ?></a></h3>
 					<div class="meta-post">
 						<a href="#">
-							Sue	Benson
+							<?= $article->getAuteurObj()->getNOMCOMPLET(); ?>
 						</a>
 						<em></em>
 						<span>
-							22 Sep 2016
+							<?= $article->getDATECREATIONARTICLE(); ?>
 						</span>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="spotlight-item-thumb">
-					<div class="spotlight-item-thumb-img">
-						<a href="#">
-							<img alt="" src="images/product/4.jpg" />
-						</a>
-						<a href="#" class="cate-tag">Computing</a>
-					</div>
-					<h3><a href="#">Six big ways MacOS Sierra is going to change your Apple experience</a></h3>
-					<div class="meta-post">
-						<a href="#">
-							Marion	Craig
-						</a>
-						<em></em>
-						<span>
-							21 Sep 2016
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="spotlight-item-thumb">
-					<div class="spotlight-item-thumb-img">
-						<a href="#">
-							<img alt="" src="images/product/5.jpg" />
-						</a>
-						<a href="#" class="cate-tag">Tech</a>
-					</div>
-					<h3><a href="#">Will Anker be the company to finally put a heads-up display in my car?</a></h3>
-					<div class="meta-post">
-						<a href="#">
-							Super User
-						</a>
-						<em></em>
-						<span>
-							26 Sep 2016
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="spotlight-item-thumb">
-					<div class="spotlight-item-thumb-img">
-						<a href="#">
-							<img alt="" src="images/product/3.jpg" />
-						</a>
-						<a href="#" class="cate-tag">business</a>
-					</div>
-					<h3><a href="#">Tip Aligning Digital Marketing with Business Goals and Objectives</a></h3>
-					<div class="meta-post">
-						<a href="#">
-							Sue	Benson
-						</a>
-						<em></em>
-						<span>
-							22 Sep 2016
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="spotlight-item-thumb">
-					<div class="spotlight-item-thumb-img">
-						<a href="#">
-							<img alt="" src="images/product/4.jpg" />
-						</a>
-						<a href="#" class="cate-tag">Computing</a>
-					</div>
-					<h3><a href="#">Six big ways MacOS Sierra is going to change your Apple experience</a></h3>
-					<div class="meta-post">
-						<a href="#">
-							Marion	Craig
-						</a>
-						<em></em>
-						<span>
-							21 Sep 2016
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="spotlight-item-thumb">
-					<div class="spotlight-item-thumb-img">
-						<a href="#">
-							<img alt="" src="images/product/5.jpg" />
-						</a>
-						<a href="#" class="cate-tag">Tech</a>
-					</div>
-					<h3><a href="#">Will Anker be the company to finally put a heads-up display in my car?</a></h3>
-					<div class="meta-post">
-						<a href="#">
-							Super User
-						</a>
-						<em></em>
-						<span>
-							26 Sep 2016
-						</span>
-					</div>
-				</div>
-			</div>
+		<?php endforeach; ?>	
 		</div>
 	</section>
 </div>
+
+<?php include SIDEBAR_SITE; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

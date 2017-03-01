@@ -15,10 +15,9 @@
                     <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
                         <h3>NOS CATEGORIES</h3>
                         <ul class="list-category">
-                            <li><a href="index.html">Accueil</a></li>
-                            <li><a href="business.html">Business</a></li>
-                            <li><a href="computing.html">Computing</a></li>
-                            <li><a href="tech.html">Tech</a></li>
+                            <?php foreach($categories as $categorie) : ?>
+                				<li><a href="<?= PUBLIC_URL.'/'.$categorie->getROUTECATEGORIE(); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
+                			<?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
