@@ -1,5 +1,6 @@
 <?php 
     $categories = $this->generateCategoryMenu();
+    $current    = ucfirst($this->getAction());
 ?>
 
 <!--menu mobile-->
@@ -32,7 +33,7 @@
 			</div>
 			<ul class="hidden-sm hidden-xs">
 				<?php foreach($categories as $categorie) : ?>
-    				<li><a href="<?= PUBLIC_URL.'/'.$categorie->getROUTECATEGORIE(); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
+    				<li <?php if($categorie->getLIBELLECATEGORIE() == $current) : echo "class='current'"; endif; ?> ><a href="<?= PUBLIC_URL.'/'.$categorie->getROUTECATEGORIE(); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
     			<?php endforeach; ?>
 			</ul>
 			<div class="search-icon">

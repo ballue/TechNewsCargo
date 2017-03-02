@@ -4,7 +4,7 @@ namespace Application\Controllers;
 
 class frontController extends \Application\Controllers\appController {
     
-    public function __construct($params) {
+    public function run($params) {
         
         //print_r($params);
         if(empty($params)) {

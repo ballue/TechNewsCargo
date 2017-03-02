@@ -120,6 +120,49 @@ class Article
     {
         return $this->AuteurObj;
     }
+    
+    /**
+     * Retourne une Accroche de 170 Caractères...
+     */
+    public function getAccroche() {
+        
+        // : http://php.net/manual/fr/function.mb-strimwidth.php
+        
+        // strip tags to avoid breaking any html
+        $string = strip_tags($this->getCONTENUARTICLE());
+        
+        if (strlen($string) > 170) {
+        
+            // truncate string
+            $stringCut = substr($string, 0, 170);
+        
+            // make sure it ends in a word so assassinate doesn't become ass...
+            $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'...';
+        }
+        return $string;
+    }
             
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

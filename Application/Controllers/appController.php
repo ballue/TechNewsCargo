@@ -2,6 +2,7 @@
 namespace Application\Controllers;
 
 use Application\Models\News\CategorieDb;
+use Application\Models\News\ArticleDb;
 
 class appController
 {
@@ -51,6 +52,32 @@ class appController
         $db = new CategorieDb();
         return $db->fetchAll();
         
+    }
+    
+    /**
+     * Récupère et Retourne les 5 Derniers Articles depuis la BDD
+     */
+    public function getLastFiveArticle() {
+        // -- Connexion à la BDD
+        $ArticleDb = new ArticleDb();
+        return $ArticleDb->fetchAll(null, 'DATECREATIONARTICLE DESC', 5);
+    }
+    
+    /**
+     * Récupère et Retourne les articles en avant dans la BDD
+     */
+    public function getSpecialArticles() {
+        // -- Connexion à la BDD
+        $ArticleDb = new ArticleDb();
+        $where = 'SPECIALARTICLE = 1';
+        return $ArticleDb->fetchAll($where);
+    }
+    
+    public function getAction() {
+        if(empty($_GET['action'])) {
+           return 'accueil';
+        }
+        return $_GET['action'];
     }
     
 }
