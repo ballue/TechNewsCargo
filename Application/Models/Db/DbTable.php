@@ -19,6 +19,10 @@ abstract class DbTable
     
     public function __construct() {
         $this->_db = DBFactory::PDOFactory();
+        
+        if(LANGUE_SITE == 'FR_fr' and $this->_table == 'categorie') {
+            $this->_table = $this->_table.'fr';
+        }
     }
     
     /**
