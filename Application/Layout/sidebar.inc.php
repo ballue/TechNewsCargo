@@ -17,10 +17,10 @@
 			<ul class="list-news-popular">
 				<?php foreach ($lastFiveArticles as $lastFiveArticle) : ?>
 				<li>
-					<a href="#">
+					<a href="<?= $this->generateArticleUrl($lastFiveArticle->getIDARTICLE(),$lastFiveArticle->getTITREARTICLE()); ?>">
 						<img alt="" src="<?= PUBLIC_URL ?>/images/product/<?= $lastFiveArticle->getFEATUREDIMAGEARTICLE(); ?>">
 					</a>
-					<h3><a href="#"><?= $lastFiveArticle->getTITREARTICLE(); ?></a></h3>
+					<h3><a href="<?= $this->generateArticleUrl($lastFiveArticle->getIDARTICLE(),$lastFiveArticle->getTITREARTICLE()); ?>"><?= $lastFiveArticle->getTITREARTICLE(); ?></a></h3>
 					<div class="meta-post">
 						<a href="#">
 							<?= $lastFiveArticle->getAuteurObj()->getNOMCOMPLET(); ?>
@@ -95,10 +95,10 @@
 		<div class="list-special">
 		<?php foreach ($specialArticles as $article) : ?>
 			<article class="news-two-large">
-				<a href="#">
+				<a href="<?= $this->generateArticleUrl($article->getIDARTICLE(),$article->getTITREARTICLE()); ?>">
 					<img alt="" src="<?= PUBLIC_URL ?>/images/product/<?= $article->getFEATUREDIMAGEARTICLE(); ?>">
 				</a>
-				<h3><a href="#"><?= $article->getTITREARTICLE(); ?></a></h3>
+				<h3><a href="<?= $this->generateArticleUrl($article->getIDARTICLE(),$article->getTITREARTICLE()); ?>"><?= $article->getTITREARTICLE(); ?></a></h3>
 				<div class="meta-post">
 					<a href="#">
 						<?= $article->getAuteurObj()->getNOMCOMPLET(); ?>

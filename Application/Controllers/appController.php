@@ -3,9 +3,13 @@ namespace Application\Controllers;
 
 use Application\Models\News\CategorieDb;
 use Application\Models\News\ArticleDb;
+use Application\Models\Configuration\Shortcut;
 
 class appController
 {
+    // -- Utilisation du Trait Shortcut, à ne pas confondre avec le use pour le namespace.
+    use Shortcut;
+    
     private $_viewparams;
     
     /**
@@ -73,11 +77,45 @@ class appController
         return $ArticleDb->fetchAll($where);
     }
     
+    /**
+     * Vérifie l'existance de valeur dans GET['action'];
+     * @return string|unknown
+     */
     public function getAction() {
         if(empty($_GET['action'])) {
            return 'accueil';
         }
         return $_GET['action'];
+    }
+    
+    /**
+     * Retourne l'URL Complète d'un Article
+     * @param Entier $IDARTICLE
+     * @param String $TITREARTICLE
+     */
+    public function generateArticleUrl($IDARTICLE, $TITREARTICLE) {
+        # Format SEO : Réécriture URL
+        # public/article/[idarticle]-[slug].html ou idarticle = $_GET['idarticle'];
+        return PUBLIC_URL.'/article/'.$IDARTICLE.'-'.$this->generateSlug($TITREARTICLE).'.html';
+    }
+    
+    /**
+     * Vérifie si $_POST contient des valeurs
+     */
+    public function isPost() {
+        if(empty($_POST)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    /**
+     * Redirection vers une nouvelle route
+     * @param unknown $route
+     */
+    public function redirect($route) {
+        header('Location: '.$route);
     }
     
 }

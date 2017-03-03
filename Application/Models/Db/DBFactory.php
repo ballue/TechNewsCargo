@@ -1,5 +1,6 @@
 <?php
 namespace Application\Models\Db;
+use Application\Models\Db\ORM;
 use PDO;
 
 /* --
@@ -23,7 +24,23 @@ class DBFactory
         return $pdo;
     }
     
-    
+    public static function start() {
+        // -- Initialisation de Idiorm
+        ORM::configure('mysql:host='.DBHOST.';dbname='.DBNAME);
+        ORM::configure('username', DBUSERNAME);
+        ORM::configure('password', DBPASSWORD);
+
+        // -- Configuration de la clé primaire de chaque table
+        // : Cette configuration n'est nécessaire que si les clé primaires sont différentes de 'id'
+        ORM::configure('id_column_overrides', array(
+            'article'       => 'IDARTICLE',
+            'auteur'        => 'IDAUTEUR',
+            'categorie'     => 'IDCATEGORIE',
+            'tags'          => 'IDTAGS',
+            'view_articles' => 'IDARTICLE',
+            'view_tags'     => 'IDARTICLE'
+        ));
+    }
     
 }
 
